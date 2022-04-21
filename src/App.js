@@ -1,7 +1,12 @@
-import { useState } from 'react';
-
+/* import { useState } from 'react'; */
+/* import { Routes, Route } from 'react-router-dom'; */
 import { ToastContainer } from 'react-toastify';
+/* import { HomeView } from './pages/HomeView/HomeView';
+import { RegisterView } from './pages/RegisterView/RegisterView';
+import { LoginView } from './pages/LoginView/LoginView';
+import { ContactsView } from './pages/ContactsView/ContactsView';
 
+import { UserMenu } from './components/UserMenu/UserMenu'; */
 import 'react-toastify/dist/ReactToastify.css';
 
 import TitleHero from './components/TitleHero/TitleHero';
@@ -9,7 +14,7 @@ import ContactForm from './components/Form/Form';
 import Filter from './components/Filter/Filter';
 import ContactList from './components/ContactList/ContactList';
 
-import { Api } from './redux/items';
+/* import { Api } from './redux/items'; */
 
 import { GlobalStyles } from './App.global.styled';
 import {
@@ -21,7 +26,7 @@ import {
 } from './App.styled';
 
 export default function App() {
-  const [filter, setFilter] = useState('');
+  /*  const [filter, setFilter] = useState('');
 
   ///////Хук для виведення данних після запиту на бекенд/////
   const { data, error, isLoading } = Api.useFetchContactsQuery(undefined, {
@@ -41,13 +46,21 @@ export default function App() {
     return data
       ?.filter(({ name }) => name.toLowerCase().includes(normalizedFilter))
       .sort((firstName, secondName) => {
-        /* console.log(firstName.name); */
+        
         return firstName.name.localeCompare(secondName.name);
       });
-  };
+  }; */
 
   return (
     <GlobalStyles>
+      {/* <UserMenu />
+
+      <Routes>
+        <Route path="/" element={<HomeView />} />
+        <Route path="/register" element={<RegisterView />} />
+        <Route path="/login" element={<LoginView />} />
+        <Route path="/contacts" element={<ContactsView />} />
+      </Routes> */}
       <TitleHero />
       <>
         <Section>
@@ -60,15 +73,11 @@ export default function App() {
         <div>
           <TitleContacts>Contacts</TitleContacts>
 
-          <Filter value={filter} onChange={changeFilter}></Filter>
+          <Filter></Filter>
         </div>
 
         <ContainerList>
-          {error && <h2>Oh no, there was an error</h2>}
-          {isLoading && <> Loading...</>}
-          {data && (
-            <ContactList data={getFilterContact()} onDeleteContact={onDeleteItems}></ContactList>
-          )}
+          <ContactList></ContactList>
         </ContainerList>
       </SectionContact>
       <ToastContainer
@@ -82,7 +91,7 @@ export default function App() {
         draggable
         pauseOnHover
       />
-      {/* Same as */}
+
       <ToastContainer />
     </GlobalStyles>
   );

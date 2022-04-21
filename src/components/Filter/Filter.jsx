@@ -1,10 +1,16 @@
 import { nanoid } from 'nanoid';
+import { useSelector, useDispatch } from 'react-redux';
 
+import { ItemsSlice } from '../../redux/items';
+import { ItemsSelectors } from '../../redux/items';
 import { LabelFilterStyle, InputFilterStyle } from './Filter.styled';
 
 const generateId = nanoid();
 
-const Filter = ({ value, onChange }) => {
+const Filter = () => {
+  const value = useSelector(ItemsSelectors.getFilter);
+  const dispatch = useDispatch();
+
   return (
     <LabelFilterStyle htmlFor={generateId}>
       Find contacts by name
@@ -13,7 +19,7 @@ const Filter = ({ value, onChange }) => {
         name="filter"
         autoComplete="off"
         value={value}
-        onChange={onChange}
+        onChange={e => dispatch(ItemsSlice.changeFilter(e.target.value))}
         id={generateId}
       />
     </LabelFilterStyle>

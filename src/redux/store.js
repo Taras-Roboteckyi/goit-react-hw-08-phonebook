@@ -1,17 +1,40 @@
-import { configureStore /* getDefaultMiddleware  */ } from '@reduxjs/toolkit';
-import { setupListeners } from '@reduxjs/toolkit/query';
+import { configureStore } from '@reduxjs/toolkit';
 
-import { Api } from './items';
+import {
+  persistStore,
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from 'redux-persist';
+
+import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
+
+import { ItemsSlice } from './items';
+
+const contactsPersistConfig = {
+  key: 'contactsKey',
+  storage,
+  blacklist: ['filter'], //Забирає властивість filter з localstorage, також існує whitelist-який включає властивість в localstorage
+};
 
 ////////Store///////////////////
 const store = configureStore({
   reducer: {
-    [Api.contactsApi.reducerPath]: Api.contactsApi.reducer,
+    contacts: persistReducer(contactsPersistConfig, ItemsSlice.reducer),
   },
-  middleware: getDefaultMiddleware => getDefaultMiddleware().concat(Api.contactsApi.middleware),
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
 });
 //console.log(store.getState());
 
-setupListeners(store.dispatch);
+const persistor = persistStore(store);
 
-export { store };
+export { store, persistor };

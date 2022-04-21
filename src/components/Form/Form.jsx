@@ -1,34 +1,51 @@
+import { useState } from 'react';
 import { nanoid } from 'nanoid';
+import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import { Api } from '../../redux/items';
+import { addContacts } from '../../redux/items';
 
 import { FormPhoneBook, LabelPhoneBook, InputPhoneBook, ButtonPhoneBook } from './Form.styled';
 
 export default function ContactForm() {
-  const [createContact] = Api.useCreateContactsMutation();
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
+  const dispatch = useDispatch();
 
   const nameInputId = nanoid();
   const numberInputId = nanoid();
 
+  const handleNameChange = event => {
+    event.preventDefault();
+
+    const { name, value } = event.currentTarget;
+
+    switch (name) {
+      case 'name':
+        setName(value);
+        break;
+      case 'number':
+        setPhone(value);
+        break;
+      default:
+        console.log(`Field type name - ${name} is not processed`);
+    }
+  };
+
   const handleSubmit = async evt => {
     evt.preventDefault();
+    dispatch(addContacts({ name, phone }));
 
-    const name = evt.currentTarget.elements.name.value;
-    const phone = evt.currentTarget.elements.number.value;
-    evt.currentTarget.reset();
+    reset();
+    toast.success('Congratulations, you have created a new contact!', {
+      position: toast.POSITION.TOP_CENTER,
+    });
+  };
 
-    //console.log(name, phone);
-
-    try {
-      await createContact({ name, phone });
-      toast.success('Congratulations, you have created a new contact!', {
-        position: toast.POSITION.TOP_CENTER,
-      });
-    } catch (error) {
-      console.log(error);
-    }
+  const reset = () => {
+    setName('');
+    setPhone('');
   };
 
   return (
@@ -43,6 +60,8 @@ export default function ContactForm() {
           required
           autoComplete="off"
           id={nameInputId}
+          value={name}
+          onChange={handleNameChange}
         />
       </LabelPhoneBook>
       <LabelPhoneBook htmlFor={numberInputId}>
@@ -55,6 +74,8 @@ export default function ContactForm() {
           required
           autoComplete="off"
           id={numberInputId}
+          value={phone}
+          onChange={handleNameChange}
         />
       </LabelPhoneBook>
       <ButtonPhoneBook type="submit">Add contact</ButtonPhoneBook>
