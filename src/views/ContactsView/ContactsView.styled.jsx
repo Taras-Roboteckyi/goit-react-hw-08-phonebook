@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import imgPhone from './images/phone.png';
+import imgPhone from '../../images/phone.png';
 
 export const TitlePhoneBook = styled.h1`
   font-size: 35px;

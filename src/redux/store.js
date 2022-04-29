@@ -14,6 +14,7 @@ import {
 import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
 
 import { ItemsSlice } from './items';
+import { authReducer } from './auth';
 
 const contactsPersistConfig = {
   key: 'contactsKey',
@@ -21,9 +22,16 @@ const contactsPersistConfig = {
   blacklist: ['filter'], //Забирає властивість filter з localstorage, також існує whitelist-який включає властивість в localstorage
 };
 
+const authPersistConfig = {
+  key: 'auth',
+  storage,
+  whitelist: ['token'], //Забирає властивість filter з localstorage, також існує whitelist-який включає властивість в localstorage
+};
+
 ////////Store///////////////////
 const store = configureStore({
   reducer: {
+    auth: persistReducer(authPersistConfig, authReducer),
     contacts: persistReducer(contactsPersistConfig, ItemsSlice.reducer),
   },
   middleware: getDefaultMiddleware =>
