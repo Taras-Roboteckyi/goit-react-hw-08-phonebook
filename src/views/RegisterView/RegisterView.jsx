@@ -15,7 +15,7 @@ const styles = {
   },
 };
 
-export default function RegisterView() {
+export function RegisterView() {
   const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');

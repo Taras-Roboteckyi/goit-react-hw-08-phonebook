@@ -47,7 +47,7 @@ export async function logOutUser() {
 }
 
 export async function currentUser(currentToken) {
-  console.log(currentToken);
+  //console.log(currentToken);
   token.set(currentToken);
   const data = await axios.get('/users/current');
 

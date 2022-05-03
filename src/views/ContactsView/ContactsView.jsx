@@ -23,7 +23,7 @@ import {
   ContainerList,
 } from './ContactsView.styled';
 
-export default function ContactsView() {
+export function ContactsView() {
   return (
     <>
       <TitleHero />
