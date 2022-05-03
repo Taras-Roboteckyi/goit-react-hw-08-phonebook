@@ -19,11 +19,11 @@ const ContactList = () => {
 
   return (
     <ListStyle>
-      {data.map(({ name, id, phone }) => {
+      {data.map(({ name, id, number }) => {
         return (
           <ContactListItem
             key={id}
-            data={{ phone, name, id }}
+            data={{ number, name, id }}
             onDeleteContact={() => {
               toast.error('Sorry you deleted the contact!', {
                 position: toast.POSITION.TOP_CENTER,

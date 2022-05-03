@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import * as contactShelfAPI from '../../services/contacts-api';
+
+import * as contactShelfAPI from '../../services/Api-heroku';
 
 export const fetchContacts = createAsyncThunk(
   'contacts/fetchContacts',
@@ -30,6 +31,7 @@ export const deleteContacts = createAsyncThunk(
   async (id, { rejectWithValue }) => {
     try {
       const data = await contactShelfAPI.deleteContacts(id);
+
       return data;
     } catch (error) {
       return rejectWithValue(error);

@@ -10,7 +10,7 @@ import { FormPhoneBook, LabelPhoneBook, InputPhoneBook, ButtonPhoneBook } from '
 
 export default function ContactForm() {
   const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
+  const [number, setNumber] = useState('');
   const dispatch = useDispatch();
 
   const nameInputId = nanoid();
@@ -26,7 +26,7 @@ export default function ContactForm() {
         setName(value);
         break;
       case 'number':
-        setPhone(value);
+        setNumber(value);
         break;
       default:
         console.log(`Field type name - ${name} is not processed`);
@@ -35,7 +35,7 @@ export default function ContactForm() {
 
   const handleSubmit = async evt => {
     evt.preventDefault();
-    dispatch(addContacts({ name, phone }));
+    dispatch(addContacts({ name, number }));
 
     reset();
     toast.success('Congratulations, you have created a new contact!', {
@@ -45,7 +45,7 @@ export default function ContactForm() {
 
   const reset = () => {
     setName('');
-    setPhone('');
+    setNumber('');
   };
 
   return (
@@ -74,7 +74,7 @@ export default function ContactForm() {
           required
           autoComplete="off"
           id={numberInputId}
-          value={phone}
+          value={number}
           onChange={handleNameChange}
         />
       </LabelPhoneBook>

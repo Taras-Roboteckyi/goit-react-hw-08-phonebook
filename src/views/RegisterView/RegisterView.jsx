@@ -1,6 +1,8 @@
 import { useState } from 'react';
-/* import { useDispatch } from 'react-redux';
-import { authOperations } from '../redux/auth'; */
+import { useDispatch } from 'react-redux';
+import { authOperations } from '../../redux/auth';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const styles = {
   form: {
@@ -14,7 +16,7 @@ const styles = {
 };
 
 export default function RegisterView() {
-  //const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -34,7 +36,7 @@ export default function RegisterView() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    //dispatch(authOperations.register({ name, email, password }));
+    dispatch(authOperations.register({ name, email, password }));
     setName('');
     setEmail('');
     setPassword('');
@@ -60,8 +62,21 @@ export default function RegisterView() {
           <input type="password" name="password" value={password} onChange={handleChange} />
         </label>
 
-        <button type="submit">Sign in</button>
+        <button type="submit">Sign up</button>
       </form>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+
+      <ToastContainer />
     </div>
   );
 }

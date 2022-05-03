@@ -1,3 +1,35 @@
-export const UserMenu = () => {
-  return <h1>Логин</h1>;
+import { useDispatch, useSelector } from 'react-redux';
+import { authSelectors, authOperations } from '../../redux/auth';
+
+//import defaultAvatar from './default-avatar.png';
+
+const styles = {
+  container: {
+    display: 'flex',
+    alignItems: 'center',
+  },
+  avatar: {
+    marginRight: 4,
+  },
+  nameUser: {
+    fontWeight: 700,
+    marginRight: 12,
+  },
 };
+
+export default function UserMenu() {
+  const dispatch = useDispatch();
+  const nameUser = useSelector(authSelectors.getUsername);
+  //console.log(nameUser);
+  //const avatar = defaultAvatar;
+
+  return (
+    <div style={styles.container}>
+      {/* <img src={avatar} alt="" width="32" style={styles.avatar} /> */}
+      <p style={styles.name}>Добро пожаловать, {nameUser}</p>
+      <button type="button" onClick={() => dispatch(authOperations.logOut())}>
+        Выйти
+      </button>
+    </div>
+  );
+}
