@@ -1,4 +1,5 @@
 import createGlobalStyle from 'styled-components';
+import styled from 'styled-components';
 import imgBG from './images/bookPhone.jpg';
 
 export const GlobalStyles = createGlobalStyle.div`
@@ -37,7 +38,7 @@ export const GlobalStyles = createGlobalStyle.div`
   body {
         background-color: #ffffff;
 
-    width: 100%;
+    max-width: 100%;
     padding-left: 15px;
     padding-right: 15px;
   }
@@ -46,5 +47,11 @@ export const GlobalStyles = createGlobalStyle.div`
   align-items: center;
   /* background-image: url(${imgBG}); */
   /* background-size: cover; */
-  padding-top: 30px;
+  
+`;
+
+export const DownloadText = styled.p`
+  font-size: 24px;
+  font-weight: 400;
+  padding-top: 200px;
 `;

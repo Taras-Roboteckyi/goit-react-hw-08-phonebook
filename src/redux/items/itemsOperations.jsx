@@ -31,7 +31,7 @@ export const deleteContacts = createAsyncThunk(
   async (id, { rejectWithValue }) => {
     try {
       const data = await contactShelfAPI.deleteContacts(id);
-
+      //console.log(data);
       return data;
     } catch (error) {
       return rejectWithValue(error);

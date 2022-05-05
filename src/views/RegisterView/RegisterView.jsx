@@ -4,16 +4,7 @@ import { authOperations } from '../../redux/auth';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const styles = {
-  form: {
-    width: 320,
-  },
-  label: {
-    display: 'flex',
-    flexDirection: 'column',
-    marginBottom: 15,
-  },
-};
+import { Container, Form, Label, Input } from './RegisterView.styled';
 
 export function RegisterView() {
   const dispatch = useDispatch();
@@ -43,27 +34,27 @@ export function RegisterView() {
   };
 
   return (
-    <div>
+    <Container>
       <h1>Страница регистрации</h1>
 
-      <form onSubmit={handleSubmit} style={styles.form} autoComplete="off">
-        <label style={styles.label}>
+      <Form onSubmit={handleSubmit} autoComplete="off">
+        <Label>
           Name
-          <input type="text" name="name" value={name} onChange={handleChange} />
-        </label>
+          <Input type="text" name="name" value={name} onChange={handleChange} />
+        </Label>
 
-        <label style={styles.label}>
+        <Label>
           Email
-          <input type="email" name="email" value={email} onChange={handleChange} />
-        </label>
+          <Input type="email" name="email" value={email} onChange={handleChange} />
+        </Label>
 
-        <label style={styles.label}>
+        <Label>
           Password
-          <input type="password" name="password" value={password} onChange={handleChange} />
-        </label>
+          <Input type="password" name="password" value={password} onChange={handleChange} />
+        </Label>
 
         <button type="submit">Sign up</button>
-      </form>
+      </Form>
       <ToastContainer
         position="top-right"
         autoClose={5000}
@@ -77,6 +68,6 @@ export function RegisterView() {
       />
 
       <ToastContainer />
-    </div>
+    </Container>
   );
 }

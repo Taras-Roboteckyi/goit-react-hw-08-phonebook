@@ -1,5 +1,14 @@
 import styled from 'styled-components';
 
+export const Container = styled.div`
+  padding-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 15px;
+  font-weight: 500;
+`;
+
 export const FormPhoneBook = styled.form`
   /*  border-color: black;
   border-style: solid; */

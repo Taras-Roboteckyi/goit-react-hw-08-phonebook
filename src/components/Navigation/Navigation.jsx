@@ -1,9 +1,12 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+//import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { authSelectors } from '../../redux/auth';
+//import imgLogo from '../../images/phone.png';
 
-const styles = {
+import { Link } from './Navigation.styled';
+
+/* const styles = {
   link: {
     display: 'inline-block',
     textDecoration: 'none',
@@ -14,21 +17,15 @@ const styles = {
   activeLink: {
     color: '#E84A5F',
   },
-};
+}; */
 
 const Navigation = () => {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   return (
     <nav>
-      <NavLink to="/" style={styles.link} /* activeStyle={styles.activeLink} */>
-        Home
-      </NavLink>
+      <Link to="/">Home</Link>
 
-      {isLoggedIn && (
-        <NavLink to="/contacts" style={styles.link} /*  activeStyle={styles.activeLink} */>
-          Contacts
-        </NavLink>
-      )}
+      {isLoggedIn && <Link to="/contacts">Contacts</Link>}
     </nav>
   );
 };

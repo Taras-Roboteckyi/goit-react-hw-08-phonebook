@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 export const Text = styled.p`
-  padding-bottom: 10px;
+  padding-bottom: 20px;
+  padding-top: 20px;
   padding-left: 30px;
   padding-right: 30px;
   text-align: center;

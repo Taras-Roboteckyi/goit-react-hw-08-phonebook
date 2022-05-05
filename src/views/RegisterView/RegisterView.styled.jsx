@@ -1,26 +1,35 @@
 import styled from 'styled-components';
 
-export const FormPhoneBook = styled.form`
+export const Container = styled.div`
+  padding-top: 30px;
+  /*  display: flex;
+  flex-direction: column;
+  font-size: 15px;
+  font-weight: 500; */
+`;
+
+export const Form = styled.form`
   /*  border-color: black;
   border-style: solid; */
+  width: 320px;
   padding: 20px;
-  display: flex;
+  /* display: flex;
   height: 195px;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: flex-start; */
   /* box-shadow: rgb(0 0 0 / 12%) 0px 1px 3px, rgb(0 0 0 / 14%) 0px 1px 1px,
     rgb(0 0 0 / 20%) 0px 2px 1px;
   border-radius: 4px; */
 `;
-export const LabelPhoneBook = styled.label`
-  padding-bottom: 20px;
+export const Label = styled.label`
+  margin-bottom: 20px;
   display: flex;
   flex-direction: column;
   font-size: 15px;
   font-weight: 500;
 `;
 
-export const InputPhoneBook = styled.input`
+export const Input = styled.input`
   margin-top: 5px;
   padding-left: 10px;
   font-size: 15px;

@@ -28,7 +28,7 @@ const ContactList = () => {
               toast.error('Sorry you deleted the contact!', {
                 position: toast.POSITION.TOP_CENTER,
               });
-              return onDeleteItems(id);
+              onDeleteItems(id);
             }}
           />
         );

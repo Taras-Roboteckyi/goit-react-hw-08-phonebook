@@ -1,7 +1,8 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+//import { NavLink } from 'react-router-dom';
+import { Link } from './AuthNav.styled';
 
-const styles = {
+/* const styles = {
   link: {
     display: 'inline-block',
     textDecoration: 'none',
@@ -12,17 +13,15 @@ const styles = {
   activeLink: {
     color: '#E84A5F',
   },
-};
+}; */
 
 export default function AuthNav() {
   return (
     <div>
-      <NavLink to="/register" style={styles.link} /* activeStyle={styles.activeLink} */>
+      <Link to="/register" /* style={styles.link} */ /* activeStyle={styles.activeLink} */>
         Register
-      </NavLink>
-      <NavLink to="/login" style={styles.link} /* activeStyle={styles.activeLink} */>
-        Login
-      </NavLink>
+      </Link>
+      <Link to="/login" /* style={styles.link} */ /* activeStyle={styles.activeLink} */>Login</Link>
     </div>
   );
 }

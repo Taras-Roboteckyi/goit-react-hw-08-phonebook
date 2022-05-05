@@ -1,4 +1,6 @@
 import React from 'react';
+import { Outlet } from 'react-router-dom';
+import { Container } from './HomeView.styled';
 
 const styles = {
   container: {
@@ -15,12 +17,15 @@ const styles = {
 };
 
 export const HomeView = () => (
-  <div style={styles.container}>
-    <h1 style={styles.title}>
-      Приветственная страница нашего сервиса{' '}
-      <span role="img" aria-label="Иконка приветствия">
-        💁‍♀️
-      </span>
-    </h1>
-  </div>
+  <>
+    <Outlet />
+    <Container /* style={styles.container} */>
+      <h1 style={styles.title}>
+        Приветственная страница нашего сервиса
+        <span role="img" aria-label="Иконка приветствия">
+          💁‍♀️
+        </span>
+      </h1>
+    </Container>
+  </>
 );

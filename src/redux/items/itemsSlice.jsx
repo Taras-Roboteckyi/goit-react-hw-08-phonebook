@@ -12,11 +12,11 @@ const itemsReducer = createSlice({
       return (state = [...state, payload]);
     },
 
-    [deleteContacts.fulfilled](state, { payload }) {
-      console.log(payload);
+    [deleteContacts.fulfilled](state, action) {
+      //console.log(action);
       return state.filter(({ id }) => {
-        console.log(id);
-        return id;
+        //console.log(id);
+        return id !== action.meta.arg;
       });
     },
   },
