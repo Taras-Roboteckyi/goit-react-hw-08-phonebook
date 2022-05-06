@@ -3,4 +3,5 @@ export const COLORS = {
   background: 'white',
   primary: 'royalblue',
   secondPrimary: 'gold',
+  backgroundColor: '#e6e6e',
 };

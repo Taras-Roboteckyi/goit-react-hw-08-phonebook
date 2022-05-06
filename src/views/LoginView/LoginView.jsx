@@ -1,61 +1,18 @@
-//import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Form, Input, Button, Checkbox } from 'antd';
 /* import 'antd/dist/antd.css'; */
 import 'antd/dist/antd.min.css';
-//import styled from 'styled-components';
 
 import { authOperations } from '../../redux/auth';
 
-import { Container } from './LoginView.styled';
-
-/* const styles = {
-  form: {
-    width: 320,
-  },
-  label: {
-    display: 'flex',
-    flexDirection: 'column',
-    marginBottom: 15,
-  },
-}; */
-/* const FormPhoneBook = styled(Form)`
- 
-  padding: 20px;
-  display: flex;
-  height: 195px;
-  flex-direction: column;
-  align-items: flex-start;
-  
-`; */
+import { Container, Title } from './LoginView.styled';
 
 export function LoginView() {
   const dispatch = useDispatch();
-  /*  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
 
-  const handleChange = ({ target: { name, value } }) => {
-    switch (name) {
-      case 'email':
-        return setEmail(value);
-      case 'password':
-        return setPassword(value);
-      default:
-        return;
-    }
-  }; */
-
-  /*  const handleSubmit = e => {
-    e.preventDefault();
-    dispatch(authOperations.login({ email, password }));
-    setEmail('');
-    setPassword('');
-  }; */
   const onFinish = values => {
     //console.log('Success:', values);
     dispatch(authOperations.login(values));
-    /* setEmail('');
-    setPassword(''); */
   };
 
   const onFinishFailed = errorInfo => {
@@ -64,21 +21,8 @@ export function LoginView() {
 
   return (
     <Container>
-      <h1>Log in to enter the application!</h1>
+      <Title>Log in to enter the application!</Title>
 
-      {/*    <form onSubmit={handleSubmit} style={styles.form} autoComplete="off">
-        <label style={styles.label}>
-          Email
-          <input type="email" name="email" value={email} onChange={handleChange} />
-        </label>
-
-        <label style={styles.label}>
-          Password
-          <input type="password" name="password" value={password} onChange={handleChange} />
-        </label>
-
-        <button type="submit">Log in</button>
-      </form> */}
       <Form
         name="basic"
         labelCol={{
@@ -92,7 +36,7 @@ export function LoginView() {
         }}
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
-        autoComplete="on"
+        autoComplete="off"
       >
         <Form.Item
           type="email"

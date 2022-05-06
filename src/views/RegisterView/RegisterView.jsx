@@ -1,59 +1,93 @@
-import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { authOperations } from '../../redux/auth';
 import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { Form, Input, Button } from 'antd';
 
-import { Container, Form, Label, Input } from './RegisterView.styled';
+import 'react-toastify/dist/ReactToastify.css';
+import 'antd/dist/antd.min.css';
+
+import { Container, Title } from './RegisterView.styled';
 
 export function RegisterView() {
   const dispatch = useDispatch();
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
 
-  const handleChange = ({ target: { name, value } }) => {
-    switch (name) {
-      case 'name':
-        return setName(value);
-      case 'email':
-        return setEmail(value);
-      case 'password':
-        return setPassword(value);
-      default:
-        return;
-    }
+  const onFinish = values => {
+    //console.log('Success:', values);
+    dispatch(authOperations.register(values));
   };
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    dispatch(authOperations.register({ name, email, password }));
-    setName('');
-    setEmail('');
-    setPassword('');
+  const onFinishFailed = errorInfo => {
+    //console.log('Failed:', errorInfo);
   };
-
   return (
     <Container>
-      <h1>Страница регистрации</h1>
+      <Title>Register to enter the application!</Title>
 
-      <Form onSubmit={handleSubmit} autoComplete="off">
-        <Label>
-          Name
-          <Input type="text" name="name" value={name} onChange={handleChange} />
-        </Label>
+      <Form
+        name="basic"
+        labelCol={{
+          span: 8,
+        }}
+        wrapperCol={{
+          span: 16,
+        }}
+        initialValues={{
+          remember: true,
+        }}
+        onFinish={onFinish}
+        onFinishFailed={onFinishFailed}
+        autoComplete="off"
+      >
+        <Form.Item
+          label="Name"
+          name="name"
+          rules={[
+            {
+              required: true,
+              message: 'Please input your name!',
+            },
+          ]}
+        >
+          <Input />
+        </Form.Item>
 
-        <Label>
-          Email
-          <Input type="email" name="email" value={email} onChange={handleChange} />
-        </Label>
+        <Form.Item
+          type="email"
+          label="Email"
+          name="email"
+          rules={[
+            {
+              required: true,
+              message: 'Please input your email!',
+            },
+          ]}
+        >
+          <Input />
+        </Form.Item>
 
-        <Label>
-          Password
-          <Input type="password" name="password" value={password} onChange={handleChange} />
-        </Label>
+        <Form.Item
+          label="Password"
+          name="password"
+          rules={[
+            {
+              required: true,
+              message: 'Please input your password!',
+            },
+          ]}
+        >
+          <Input.Password />
+        </Form.Item>
 
-        <button type="submit">Sign up</button>
+        <Form.Item
+          wrapperCol={{
+            offset: 8,
+            span: 16,
+          }}
+        >
+          <Button type="primary" htmlType="submit">
+            Log in
+          </Button>
+        </Form.Item>
       </Form>
       <ToastContainer
         position="top-right"

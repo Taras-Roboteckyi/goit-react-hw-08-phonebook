@@ -6,7 +6,7 @@ export const Container = styled.div`
 
 export const NameUser = styled.p`
   margin-right: 10px;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 600;
   color: ${props => props.theme.colors.primary};
 `;
@@ -14,7 +14,7 @@ export const NameUser = styled.p`
 export const ButtonExit = styled.button`
   padding: 5px 20px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
-  font-size: 12px;
+  font-size: 14px;
   border-radius: 5px;
   border: none;
   color: ${props => props.theme.colors.background};

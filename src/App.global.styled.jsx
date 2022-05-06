@@ -36,11 +36,10 @@ export const GlobalStyles = createGlobalStyle.div`
   }
   /*-------------Body--------------*/
   body {
-        background-color: #ffffff;
-
-    max-width: 100%;
-    padding-left: 15px;
-    padding-right: 15px;
+        background-color: #e6e6e6;
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
   }
   display: flex;
   flex-direction: column;

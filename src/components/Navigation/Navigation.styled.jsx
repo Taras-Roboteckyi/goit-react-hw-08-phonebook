@@ -9,7 +9,7 @@ export const Link = styled(NavLink)`
   font-weight: bold;
   padding: 15px;
   &.active {
-    color: ${props => props.theme.colors.secondPrimary};
+    color: ${props => props.theme.colors.primary};
     transition: color 500ms cubic-bezier(0.4, 0, 0.2, 1);
   }
   &:hover,

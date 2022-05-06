@@ -2,9 +2,17 @@ import styled from 'styled-components';
 
 export const Header = styled.header`
   display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  background-color: #e6e6e6;
+`;
+export const Container = styled.div`
+  display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #2a363b;
+
   min-width: 1024px;
-  padding-top: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
 `;

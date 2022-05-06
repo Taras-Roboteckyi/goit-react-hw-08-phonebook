@@ -43,7 +43,7 @@ export default function App() {
     dispatch(authOperations.fetchCurrentUser());
   }, [dispatch]);
   return (
-    !isRefetchingPage && ( //Щоб не мигав інтерфейс при переході на перезагрузку
+    !isRefetchingPage && ( //Щоб не моргав інтерфейс при переході на перезагрузку
       <GlobalStyles>
         <Suspense fallback={<DownloadText>Download...</DownloadText>}>
           <Routes>

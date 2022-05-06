@@ -1,7 +1,6 @@
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-//import { Wrapper } from './Layout.styled';
 import AppBar from '../AppBar/AppBar';
 import { Outlet } from 'react-router-dom';
 
