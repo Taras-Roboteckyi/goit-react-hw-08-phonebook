@@ -7,14 +7,15 @@ import { GlobalStyles, DownloadText } from './App.global.styled';
 import { authOperations, authSelectors } from './redux/auth';
 
 import { Layout } from './components/Layout/Layout';
+import { HomeView } from './views/HomeView/HomeView';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import PublicRoute from './components/PublicRoute/PublicRoute';
 
-const HomeView = lazy(() =>
+/* const HomeView = lazy(() =>
   import('./views/HomeView/HomeView').then(module => ({
     default: module.HomeView,
   })),
-);
+); */
 
 const RegisterView = lazy(() =>
   import('./views/RegisterView/RegisterView').then(module => ({

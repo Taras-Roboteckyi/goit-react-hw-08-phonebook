@@ -47,7 +47,7 @@ export const Text = styled.h2`
   font-size: 150px;
   position: relative;
   z-index: 11;
-  mix-blend-mode: overlay;
+  /* mix-blend-mode: overlay; */
   text-shadow: 5px 5px 5px yellow;
 `;
 

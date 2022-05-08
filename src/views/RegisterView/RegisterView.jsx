@@ -85,7 +85,7 @@ export function RegisterView() {
           }}
         >
           <Button type="primary" htmlType="submit">
-            Log in
+            Sign in
           </Button>
         </Form.Item>
       </Form>
