@@ -1,16 +1,26 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
+import ReactPlayer from 'react-player';
 import {
   Container,
   HeroText,
   Section,
   Text,
-  VideoHero,
+  /* VideoHero, */
   Footer,
   FooterContainer,
   FooterText,
 } from './HomeView.styled';
 import video from '../../video/fire.mp4';
+
+const divStyle = {
+  /* position: absolute, */
+  left: 0,
+  top: 0,
+  /* width: 100%,
+  height: 100%, */
+  /* objectFit: cover, */
+};
 
 export const HomeView = () => (
   <>
@@ -23,10 +33,20 @@ export const HomeView = () => (
       </HeroText>
       <Section>
         <Text>Get Started!</Text>
-        <VideoHero loop autoPlay>
+        {/*  <VideoHero loop autoPlay>
           <source src={video} type="video/mp4" />
           Your browser does not support the video tag.
-        </VideoHero>
+        </VideoHero> */}
+        <ReactPlayer
+          /* className="react-player" */
+          playing={true}
+          loop={true}
+          url={video}
+          width="100%"
+          height="100%"
+          muted={true}
+          stopOnUnmount={false}
+        />
       </Section>
     </Container>
     <Footer>

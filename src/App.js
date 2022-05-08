@@ -1,6 +1,6 @@
 import { useEffect, lazy, Suspense } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 
 import { GlobalStyles, DownloadText } from './App.global.styled';
 
@@ -77,6 +77,7 @@ export default function App() {
                 }
               />
             </Route>
+            <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </Suspense>
       </GlobalStyles>

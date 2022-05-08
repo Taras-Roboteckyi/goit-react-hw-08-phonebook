@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { addContacts } from '../../redux/items';
+import * as contactShelfAPI from '../../services/Api-heroku';
 
 import { FormPhoneBook, LabelPhoneBook, InputPhoneBook, ButtonPhoneBook } from './Form.styled';
 
@@ -35,12 +36,25 @@ export default function ContactForm() {
 
   const handleSubmit = async evt => {
     evt.preventDefault();
-    dispatch(addContacts({ name, number }));
+
+    const contact = { name };
+    const fetchContacts = await contactShelfAPI.fetchContacts();
+    //console.log(fetchContacts);
+    const isContact = fetchContacts.find(
+      ({ name }) => name.toLowerCase() === contact.name.toLowerCase(),
+    );
+
+    if (typeof isContact === 'undefined') {
+      dispatch(addContacts({ name, number }));
+      toast.success('Congratulations, you have created a new contact!', {
+        position: toast.POSITION.TOP_CENTER,
+      });
+    } else
+      toast.error(`${contact.name} is already in contacts.`, {
+        position: toast.POSITION.TOP_CENTER,
+      });
 
     reset();
-    toast.success('Congratulations, you have created a new contact!', {
-      position: toast.POSITION.TOP_CENTER,
-    });
   };
 
   const reset = () => {
